@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 import tensorflow as tf
+import os
+import requests
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
@@ -72,10 +74,28 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------- LOAD TRAINED CNN ----------------
+MODEL_PATH = "/tmp/industrial_defect_cnn.keras"
+
+MODEL_URL = (
+    "https://github.com/Mounika-Mondru/"
+    "industrial-defect-detection/releases/download/"
+    "v1.0/industrial_defect_cnn.keras"
+)
+
 @st.cache_resource
 def load_model():
-    # Keep the .keras model file in the same folder as app.py
-    return tf.keras.models.load_model("industrial_defect_cnn.keras", compile=False)
+    if not os.path.exists(MODEL_PATH):
+        with st.spinner("Downloading trained CNN model..."):
+            response = requests.get(MODEL_URL, timeout=300)
+            response.raise_for_status()
+
+            with open(MODEL_PATH, "wb") as file:
+                file.write(response.content)
+
+    return tf.keras.models.load_model(
+        MODEL_PATH,
+        compile=False
+    )
 
 # ---------------- HEADER ----------------
 st.markdown(
