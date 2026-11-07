@@ -37,7 +37,6 @@ st.markdown("""
         padding: 1.25rem;
         border-radius: 16px;
         border: 1px solid #dce5f0;
-        box-shadow: 0 5px 18px rgba(25, 55, 90, 0.07);
     }
     .result-normal {
         background: #e8f7ee;
@@ -160,7 +159,7 @@ with right:
                 defect_probability = float(np.asarray(prediction).reshape(-1)[0])
 
                 # Same decision threshold used for the reported CNN result.
-                threshold = 0.50
+                threshold = 0.25
                 is_defective = defect_probability >= threshold
 
                 st.markdown("**Output Image**")
