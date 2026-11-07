@@ -33,10 +33,10 @@ st.markdown("""
         margin-bottom: 1.8rem;
     }
     .panel {
-        background: white;
-        padding: 1.25rem;
-        border-radius: 16px;
-        border: 1px solid #dce5f0;
+    background: transparent;
+    padding: 0.5rem;
+    border: none;
+    box-shadow: none;
     }
     .result-normal {
         background: #e8f7ee;
@@ -132,7 +132,7 @@ with left:
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
-        st.image(image, caption="Uploaded Input Image", use_container_width=True)
+        st.image(image, caption="Uploaded Input Image", width=300)
     else:
         st.write("Upload an image to begin inspection.")
     st.markdown('</div>', unsafe_allow_html=True)
@@ -163,8 +163,7 @@ with right:
                 is_defective = defect_probability >= threshold
 
                 st.markdown("**Output Image**")
-                st.image(image, caption="Image passed to the CNN", use_container_width=True)
-
+                st.image(image, caption="Image passed to the CNN", width=300)
                 st.markdown("**Prediction**")
                 if is_defective:
                     st.markdown(
@@ -185,7 +184,7 @@ with right:
                 st.progress(max(0.0, min(1.0, defect_probability)))
 
                 st.caption(
-                    "Decision threshold: 50%. This is a model prediction, "
+                    "Decision threshold: 25%. This is a model prediction, "
                     "not a guarantee of industrial quality."
                 )
 
