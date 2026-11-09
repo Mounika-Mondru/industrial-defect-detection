@@ -217,6 +217,7 @@ with left:
     )
 
     image = None
+    inspect_clicked = False
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
@@ -224,11 +225,15 @@ with left:
         st.image(
             image,
             caption="Uploaded Metal Nut",
-            width=500
+            width=300
+        )
+
+        inspect_clicked = st.button(
+            "🔍 Inspect Image",
+            type="primary"
         )
     else:
         st.info("Upload a metal-nut image to start inspection.")
-
 
 with right:
     st.markdown(
@@ -240,7 +245,7 @@ with right:
         st.info("Your inspection result will appear here.")
 
     else:
-        if st.button("🔍 Inspect Image", type="primary"):
+        if inspect_clicked:
             try:
                 model = load_model()
 
