@@ -79,7 +79,7 @@ header[data-testid="stHeader"] {
     height: 3.1rem;
     border-radius: 12px;
     border: none;
-    background: linear-gradient(90deg, #2563eb, #6d5dfc);
+    background: #1559a6;
     color: white;
     font-size: 1rem;
     font-weight: 750;
@@ -87,31 +87,29 @@ header[data-testid="stHeader"] {
 }
 
 .stButton > button:hover {
-    background: linear-gradient(90deg, #1d4ed8, #5845e8);
+    background: #0e437f;
     color: white;
     transform: translateY(-2px);
 }
 
 .normal-result {
-    background: #dcfce7;
-    border: 1px solid #86efac;
-    color: #166534;
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    font-size: 1.35rem;
-    font-weight: 800;
+    background: #e8f7ee;
+    border-left: 6px solid #1b9b59;
+    padding: 1rem;
+    border-radius: 10px;
+    color: #145c38;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .defect-result {
-    background: #fee2e2;
-    border: 1px solid #fca5a5;
-    color: #991b1b;
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    font-size: 1.35rem;
-    font-weight: 800;
+    background: #fff0ed;
+    border-left: 6px solid #d94b3d;
+    padding: 1rem;
+    border-radius: 10px;
+    color: #8e241c;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .info-card {
@@ -180,30 +178,28 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# ---------------- SIDEBAR ----------------
+with st.sidebar:
+    st.header("📌 About the Project")
 
-# ---------------- PROJECT INFORMATION ----------------
-info1, info2, info3 = st.columns(3)
-
-with info1:
-    st.markdown(
-        '<div class="info-card">🧠 <b>Model</b><br>TensorFlow / Keras</div>',
-        unsafe_allow_html=True
+    st.write(
+        "This application uses a trained Convolutional Neural Network "
+        "to classify a metal-nut image as Normal or Defective."
     )
 
-with info2:
-    st.markdown(
-        '<div class="info-card">📊 <b>Dataset</b><br>MVTec AD – Metal Nut</div>',
-        unsafe_allow_html=True
-    )
+    st.divider()
 
-with info3:
-    st.markdown(
-        '<div class="info-card">🖼️ <b>Input Size</b><br>128 × 128 RGB</div>',
-        unsafe_allow_html=True
-    )
+    st.subheader("🧠 Model Information")
+    st.write("**Model:** TensorFlow / Keras")
+    st.write("**Dataset:** MVTec AD – Metal Nut")
+    st.write("**Input Size:** 128 × 128 RGB")
 
-st.write("")
+    st.divider()
 
+    st.subheader("🔍 Detection Details")
+    st.write("**Task:** Normal / Defective Classification")
+    st.write("**Decision Threshold:** 25%")
+    st.write("**Image Format:** JPG, JPEG, PNG")
 
 # ---------------- IMAGE INPUT AND RESULT ----------------
 left, right = st.columns(2, gap="large")
@@ -227,7 +223,7 @@ with left:
         st.image(
             image,
             caption="Uploaded Metal Nut",
-            width=300
+            width=500
         )
     else:
         st.info("Upload a metal-nut image to start inspection.")
@@ -270,7 +266,7 @@ with right:
                 st.image(
                     image,
                     caption="Inspected Image",
-                    width=300
+                    width=500
                 )
 
                 st.markdown("**Prediction**")
