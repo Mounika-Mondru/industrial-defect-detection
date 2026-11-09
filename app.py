@@ -28,13 +28,14 @@ header[data-testid="stHeader"] {
 
 .main .block-container {
     max-width: 1100px;
-    padding-top: 2rem;
+    padding-top: 0rem;
     padding-bottom: 2rem;
 }
 
 .hero {
     text-align: center;
-    padding: 25px 10px 28px 10px;
+    padding: 5px 10px 20px 10px;
+    margin-top: 0;
 }
 
 .hero h1 {
