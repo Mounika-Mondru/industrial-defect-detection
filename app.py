@@ -261,6 +261,7 @@ with right:
                 # Classification threshold
                 threshold = 0.25
                 is_defective = defect_probability >= threshold
+                normal_probability = 1 - defect_probability
 
                 st.markdown("**Output Image**")
 
@@ -288,6 +289,10 @@ with right:
                 st.metric(
                     label="Predicted Defect Probability",
                     value=f"{defect_probability * 100:.2f}%"
+                )
+                st.metric(
+                    label="Predicted Normal Probability",
+                    value=f"{normal_probability * 100:.2f}%"
                 )
 
                 st.progress(
