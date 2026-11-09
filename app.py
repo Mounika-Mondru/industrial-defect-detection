@@ -300,7 +300,7 @@ with right:
                 )
 
                 st.caption(
-                    "Classification threshold: 25%. "
+                    "Classification threshold: 50%. "
                     "This is an academic prototype and not a "
                     "guarantee of industrial quality."
                 )
