@@ -259,7 +259,7 @@ with right:
                 )
 
                 # Classification threshold
-                threshold = 0.25
+                threshold = 0.50
                 is_defective = defect_probability >= threshold
                 normal_probability = 1 - defect_probability
 
