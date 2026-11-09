@@ -292,12 +292,12 @@ with right:
                 st.write("")
 
                 st.metric(
-                    label="Predicted Defect Probability",
-                    value=f"{defect_probability * 100:.2f}%"
-                )
-                st.metric(
                     label="Predicted Normal Probability",
                     value=f"{normal_probability * 100:.2f}%"
+                )
+                st.metric(
+                    label="Predicted Defect Probability",
+                    value=f"{defect_probability * 100:.2f}%"
                 )
 
                 st.progress(
